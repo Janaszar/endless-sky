@@ -74,10 +74,9 @@ string Format::Number(double value)
 	if(left > 3)
 		delimiterIndex = left - 3;
 	
-	while(rounded | right)
-	{
+	do {
 		int digit = rounded % 10;
-		if(nonzero | digit)
+		if(nonzero || digit)
 		{
 			result += static_cast<char>(digit + '0');
 			nonzero = true;
@@ -90,7 +89,11 @@ string Format::Number(double value)
 			if(!right)
 			{
 				if(nonzero)
+				{
 					result += '.';
+					if(!rounded)
+						result += '0';
+				}
 				nonzero = true;
 			}
 		}
@@ -100,7 +103,7 @@ string Format::Number(double value)
 			if(left == delimiterIndex && rounded)
 				result += ',';
 		}
-	}
+	} while(rounded || right);
 	
 	// Add the negative sign if needed.
 	if(isNegative)
