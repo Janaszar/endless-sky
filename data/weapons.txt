@@ -173,7 +173,7 @@ outfit "Laser Turret"
 	"turret mounts" -1
 	"required crew" 1
 	weapon
-		sprite "projectile/2x laser"
+		sprite "projectile/laser"
 			"frame rate" 1
 		"hardpoint sprite" "hardpoint/laser turret"
 		"hardpoint offset" 7.
